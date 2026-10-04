@@ -22,8 +22,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Persist the SQLite database outside the container layer.
-VOLUME ["/app/data"]
+# /app/data holds the SQLite database; attach a Railway Volume mounted at /app/data.
 
 # Dashboard port (only used when DASHBOARD_ENABLED=true).
 EXPOSE 3000
